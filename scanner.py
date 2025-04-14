@@ -14,8 +14,6 @@ from dotenv import load_dotenv # safe api key handling
 load_dotenv()
 VT_API_KEY = os.getenv("VT_API_KEY")
 
-getUserKey = input("Please enter your API Key if you have one. Skip this Otherwise.")
-
 # TODO encrypt api key (the user should have their own api key so this may not be neccesary, dev's API key should not be posted.)
 # TODO prompt user to enter their own key. Either create a .env file with it, or modify one. 
 def main():
