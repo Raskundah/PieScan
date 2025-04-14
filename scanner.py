@@ -13,10 +13,13 @@ from dotenv import load_dotenv # safe api key handling
 # Load API key from .env
 load_dotenv()
 VT_API_KEY = os.getenv("VT_API_KEY")
-# TODO encrypt api key (the user should have their own api key so this may not be neccesary, dev's API key should not be posted.)
 
+getUserKey = input("Please enter your API Key if you have one. Skip this Otherwise.")
+
+# TODO encrypt api key (the user should have their own api key so this may not be neccesary, dev's API key should not be posted.)
+# TODO prompt user to enter their own key. Either create a .env file with it, or modify one. 
 def main():
-    args = parse_arguments() # takes in the user arguments. 
+    args = parse_arguments() # takes in the user arguments. this is to allow users to know what input is required and query options. 
     known_hashes = load_known_hashes(args.hash_list) if args.hash_list else set() 
     scan_directory(args.directory, known_hashes, args.vt_check)
 
