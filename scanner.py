@@ -33,6 +33,7 @@ def load_known_hashes(hash_list_path):
         return set(line.strip().lower() for line in f) # loads the hashes from the file line by line, as a stripped lowercase string. also handles duplicates.
 
 def scan_directory(directory, known_hashes, vt_check): # bulk of the code is here.
+    print("Scanning directory.")
     for root, _, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
@@ -47,6 +48,7 @@ def scan_directory(directory, known_hashes, vt_check): # bulk of the code is her
 
             # Check VirusTotal if the user requests to.
             if vt_check:
+                print("Checking Virus total.")
                 vt_result = check_virustotal(file_hash)
                 if vt_result["malicious"]:
                     print(f"[VT HIT] {file_path} - {file_hash}")
