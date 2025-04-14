@@ -23,8 +23,8 @@ def main():
 
 def parse_arguments(): # does what it says
     parser = argparse.ArgumentParser(description="Malware Hash Scanner")
-    parser.add_argument("directory", help="Directory to scan")
-    parser.add_argument("--hash-list", help="Path to local hash list file") # using local file list.
+    parser.add_argument("directory", help="Directory to scan") ## shows the arguments
+    parser.add_argument("--hash-list", help="Path to local hash list file") # allows the user to choose their own hash list.
     parser.add_argument("--vt-check", action="store_true", help="Enable VirusTotal checks") # using virus total
     return parser.parse_args() # currently passes usage checks and correctly takes a directory variable. 
 
@@ -75,7 +75,7 @@ def check_virustotal(file_hash):
         time.sleep(15) # Handles api rate limiting, as we can take 4 calls a minute on a free api key.
         response = requests.get(url, headers=headers)
         response.raise_for_status()
-        data = response.json() # allows returning of the result in json format. 
+        data = response.json() # stores results in json format. allows the function to return requested data.
         
         return {
             "malicious": data["data"]["attributes"]["last_analysis_stats"]["malicious"] > 0,
