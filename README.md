@@ -66,12 +66,12 @@ Note: Docker integration is under development.
 
 📂 File Structure
 
-.
-├── scanner.py             # Main script
-├── known_hashes.txt       # Example local hash list
-├── /Default               # Holds the test file to check local scan works.
-├── .env                   # API key storage
-└── README.md              # This file
+
+├── scanner.py             # Main script  
+├── known_hashes.txt       # Example local hash list  
+├── /Default               # Holds the test file to check local scan works.  
+├── .env                   # API key storage  
+└── README.md              # This file  
 
 ⚠️ Notes
 
