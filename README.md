@@ -20,20 +20,20 @@ A Python script to scan directories for malicious files using local hash lists a
    ```
    python --version
 
-    Install Dependencies (Run as Admin):
+  Install Dependencies (Run as Admin):
     
     
 
     pip install requests python-dotenv
 
-    If failed, install separately:
+  If failed, install separately:
     
     
 
     pip install requests
     pip install dotenv
 
-    Environment Setup:
+ Environment Setup:
 
         Create a .env file in the project root:
         
