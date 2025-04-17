@@ -82,11 +82,11 @@ Note: Docker integration is under development.
 
 ⚠️ Notes
 
-    - VirusTotal Rate Limits: Free API allows 4 requests/minute. Add time.sleep(15) in the code if needed.
+  * VirusTotal Rate Limits: Free API allows 4 requests/minute. Add time.sleep(15) in the code if needed.
 
-    - Hash List Format: One hash per line (SHA-256, lowercase).
+  * Hash List Format: One hash per line (SHA-256, lowercase).
 
-    - Permissions: Run with admin rights to access restricted files.
+  * Permissions: Run with admin rights to access restricted files.
 
 
 
