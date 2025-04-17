@@ -54,13 +54,31 @@ Full Scan (Local + VirusTotal)
 
     python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check
 
-Arguments
-Argument	Description
-directory	Path to scan (required)
-  --hash-list	Path to local hash list file
---vt-check	Enable VirusTotal API checks
-🐋 Docker Support (Coming Soon!)
+## 🛠️ Arguments
 
+| Argument          | Description                                  | Required |
+|-------------------|----------------------------------------------|----------|
+| `directory`       | Path to directory to scan                   | Yes      |
+| `--hash-list`     | Path to local hash list file (e.g., `known_hashes.txt`) | No       |
+| `--vt-check`      | Enable VirusTotal API checks (adds 15s delay per file) | No       |
+
+---
+
+## 🐋 Docker Support 
+***(Coming Soon!)***
+
+> **Note:** Docker integration is currently under development. Check back later for containerized deployment options.
+
+---
+
+## 📂 File Structure
+
+```plaintext
+.
+├── scanner.py             # Main scanning script
+├── known_hashes.txt       # Sample malware hash database
+├── .env                   # VirusTotal API key storage
+└── README.md              # Project documentation
 Note: Docker integration is under development.
 📂 File Structure
 
