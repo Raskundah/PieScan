@@ -40,6 +40,8 @@ A Python script to scan directories for malicious files using local hash lists a
 
   Ensure your environment allows imported scripts (e.g., disable execution restrictions in PowerShell/CMD).
 
+  ---
+
 ## 🚀 Usage
 Basic Scan (Local Hash List Only)
 
@@ -60,11 +62,15 @@ python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
 | --vt-check     | Enables VirusTotal API
 
 
+---
+
 ## 🐋 Docker Support (Coming Soon!)
 
 Note: Docker integration is under development.
 
-📂 File Structure
+---
+
+## 📂 File Structure
 
 
 ├── scanner.py             # Main script  
@@ -72,6 +78,8 @@ Note: Docker integration is under development.
 ├── /Default               # Holds the test file to check local scan works.  
 ├── .env                   # API key storage  
 └── README.md              # This file  
+
+---
 
 ## ⚠️ Notes
 
