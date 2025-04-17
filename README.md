@@ -33,7 +33,7 @@ A Python script to scan directories for malicious files using local hash lists a
     pip install requests
     pip install dotenv
 
-    Environment Setup:
+  Environment Setup:
 
         Create a .env file in the project root:
      
