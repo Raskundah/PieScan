@@ -19,10 +19,7 @@ A Python script to scan directories for malicious files using local hash lists a
    Verify with:  
    ```
    python --version
-
   Install Dependencies (Run as Admin):
-    
-  
 
     pip install requests python-dotenv
 
