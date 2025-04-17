@@ -15,6 +15,7 @@ from dotenv import load_dotenv # safe api key handling
 load_dotenv()
 VT_API_KEY = os.getenv("VT_API_KEY")
 
+
 # TODO encrypt api key (the user should have their own api key so this may not be neccesary, dev's API key should not be posted.)
 # TODO prompt user to enter their own key. Either create a .env file with it, or modify one. 
 def main():
@@ -22,18 +23,23 @@ def main():
     known_hashes = load_known_hashes(args.hash_list) if args.hash_list else set() 
     scan_directory(args.directory, known_hashes, args.vt_check)
 
-def parse_arguments(): # does what it says
+def parse_arguments(): 
+    ''' here we setup the ability for the user to pass arguments to the script depending on what they need.'''
     parser = argparse.ArgumentParser(description="Malware Hash Scanner")
-    parser.add_argument("directory", help="Directory to scan") ## shows the arguments
+    parser.add_argument("directory", help="Directory to scan") ## required. 
     parser.add_argument("--hash-list", help="Path to local hash list file") # allows the user to choose their own hash list.
-    parser.add_argument("--vt-check", action="store_true", help="Enable VirusTotal checks") # using virus total
-    return parser.parse_args() # currently passes usage checks and correctly takes a directory variable. 
+    parser.add_argument("--vt-check", action="store_true", help="Enable VirusTotal checks") # using virus total? you need this.
+    return parser.parse_args()
 
 def load_known_hashes(hash_list_path):
+    '''Loads the data from a given local list, if required. This allows the user to specify where their list is'''
     with open(hash_list_path, "r") as f:
         return set(line.strip().lower() for line in f) # loads the hashes from the file line by line, as a stripped lowercase string. also handles duplicates.
 
+
 def scan_directory(directory, known_hashes, vt_check):
+    '''The main function which scans file hashes and compares to a local list, and if there's a virus total hit, tells us what want to know about the file.'''
+    # the purpose of this function is to contain the scanning of the local directory, so we can see what it picks up.
     for root, _, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
@@ -48,8 +54,9 @@ def scan_directory(directory, known_hashes, vt_check):
 
             # VirusTotal check
             if vt_check:
-                vt_result = check_virustotal(file_hash) # if yuou want to view different data, edit the virus total function and this section to display various json data.
+                vt_result = check_virustotal(file_hash) # if you want to view different data, edit the virus total function and this section to display various json data.
                 
+
                 if vt_result["status"] == "found":
                     print(f"\n[VT RESULTS] {file_path}")
                     print(f"Hash: {file_hash}")
@@ -77,7 +84,9 @@ def scan_directory(directory, known_hashes, vt_check):
                     
 
 def compute_hash(file_path, buffer_size=65536): # scans the file in 65536 byte chunks. 
-    # TODO impliment threading for faster handling (falls under should haves.)
+    ''' Here we compute the sha256 hash of a given file, to be compared to local lists and the VirusTotal database.'''
+
+    # TODO impliment threading for faster handling (falls under could haves.)
     try:
         sha256 = hashlib.sha256() # cause sha256 avoids hash collisions practically entirely. may switch to md5 if virustotal doesnt like sha256 as usual.
         with open(file_path, "rb") as f:
@@ -89,6 +98,10 @@ def compute_hash(file_path, buffer_size=65536): # scans the file in 65536 byte c
         return None
 
 def check_virustotal(file_hash):
+    ''' The purpose of this function is to parsae file hashes so we can check if virustotal knows about them, and what it knows. '''
+
+    time.sleep(15) # remove this if you can request more than 4 queries per minute. Clunky, but it works.
+    
     url = f"https://www.virustotal.com/api/v3/files/{file_hash}"
     headers = {"x-apikey": VT_API_KEY}
     
@@ -111,8 +124,8 @@ def check_virustotal(file_hash):
             "code": 200,
             "malicious": stats.get("malicious", 0) > 0,
             "detections": f"{stats.get('malicious', 0)}/{sum(stats.values())}",
-            "categories": data["data"]["attributes"].get("popular_threat_classification", {}).get("popular_threat_category", []),
-            "labels": data["data"]["attributes"].get("popular_threat_classification", {}).get("suggested_threat_label", []),
+            "categories": attributes.get("popular_threat_classification", {}).get("popular_threat_category", []),
+            "labels": attributes.get("popular_threat_classification", {}).get("suggested_threat_label", []),
             "file_type": attributes.get("type_description", "Unknown"),
             "reputation": attributes.get("reputation", "N/A")
         }
