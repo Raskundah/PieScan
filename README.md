@@ -28,7 +28,7 @@ A Python script to scan directories for malicious files using local hash lists a
 
   If failed, install separately:
     bash
-    Copy
+    
 
     pip install requests
     pip install dotenv
@@ -36,7 +36,7 @@ A Python script to scan directories for malicious files using local hash lists a
   Environment Setup:
 
         Create a .env file in the project root:
-        ini
+        
    
 
         VT_API_KEY=your_virustotal_api_key_here
@@ -46,15 +46,19 @@ A Python script to scan directories for malicious files using local hash lists a
 🚀 Usage
 Basic Scan (Local Hash List Only)
 
-  ```
-{
+```
+
  python scanner.py /path/to/scan --hash-list known_hashes.txt
-}
+
 ```
 
 Full Scan (Local + VirusTotal)
 
-``` { python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check} ```
+```
+
+python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
+
+```
 
 | Argument      | Description 
 | :---        |    :----:   
