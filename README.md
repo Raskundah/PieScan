@@ -17,17 +17,17 @@ A Python script to scan directories for malicious files using local hash lists a
 ## ⚙️ Prerequisites (Without Docker)
 1. **Python 3.6+**  
    Verify with:  
-   ```bash
+   ```
    python --version
 
   Install Dependencies (Run as Admin):
-    bash
+    
   
 
     pip install requests python-dotenv
 
   If failed, install separately:
-    bash
+    
     
 
     pip install requests
