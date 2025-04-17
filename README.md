@@ -35,7 +35,7 @@ A Python script to scan directories for malicious files using local hash lists a
 
   Environment Setup:
 
-        Create a .env file in the project root:
+  Create a .env file in the project root:
         
    
 
@@ -70,3 +70,25 @@ python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
 🐋 Docker Support (Coming Soon!)
 
 Note: Docker integration is under development.
+
+📂 File Structure
+
+.
+├── scanner.py             # Main script
+├── known_hashes.txt       # Example local hash list
+├── /Default               # Holds the test file to check local scan works.
+├── .env                   # API key storage
+└── README.md              # This file
+
+⚠️ Notes
+
+    - VirusTotal Rate Limits: Free API allows 4 requests/minute. Add time.sleep(15) in the code if needed.
+
+    - Hash List Format: One hash per line (SHA-256, lowercase).
+
+    - Permissions: Run with admin rights to access restricted files.
+
+
+
+
+
