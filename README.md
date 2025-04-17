@@ -35,31 +35,29 @@ A Python script to scan directories for malicious files using local hash lists a
 
  Environment Setup:
 
-        Create a .env file in the project root:
+  Create a .env file in the project root:
         
         
 
         VT_API_KEY=your_virustotal_api_key_here
 
-        Ensure your environment allows imported scripts (e.g., disable execution restrictions in PowerShell/CMD).
+  Ensure your environment allows imported scripts (e.g., disable execution restrictions in PowerShell/CMD).
 
 🚀 Usage
 Basic Scan (Local Hash List Only)
 
 
-
-python scanner.py /path/to/scan --hash-list known_hashes.txt
+    python scanner.py /path/to/scan --hash-list known_hashes.txt
 
 Full Scan (Local + VirusTotal)
 
 
-
-python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check
+    python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check
 
 Arguments
 Argument	Description
 directory	Path to scan (required)
---hash-list	Path to local hash list file
+  --hash-list	Path to local hash list file
 --vt-check	Enable VirusTotal API checks
 🐋 Docker Support (Coming Soon!)
 
