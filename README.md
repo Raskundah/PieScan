@@ -36,7 +36,7 @@ A Python script to scan directories for malicious files using local hash lists a
         
    
 
-        VT_API_KEY=your_virustotal_api_key_here
+    VT_API_KEY=your_virustotal_api_key_here
 
   Ensure your environment allows imported scripts (e.g., disable execution restrictions in PowerShell/CMD).
 
