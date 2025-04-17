@@ -1,4 +1,4 @@
-# Malware Hash Scanner 🔍
+Malware Hash Scanner 🔍
 
 A Python script to scan directories for malicious files using local hash lists and the VirusTotal API. Ideal for cybersecurity investigations and threat hunting.
 
@@ -21,12 +21,14 @@ A Python script to scan directories for malicious files using local hash lists a
    python --version
 
     Install Dependencies (Run as Admin):
-
+    
+    
 
     pip install requests python-dotenv
 
     If failed, install separately:
-
+    
+    
 
     pip install requests
     pip install dotenv
@@ -34,7 +36,8 @@ A Python script to scan directories for malicious files using local hash lists a
     Environment Setup:
 
         Create a .env file in the project root:
-       
+        
+        
 
         VT_API_KEY=your_virustotal_api_key_here
 
@@ -44,9 +47,11 @@ A Python script to scan directories for malicious files using local hash lists a
 Basic Scan (Local Hash List Only)
 
 
+
 python scanner.py /path/to/scan --hash-list known_hashes.txt
 
 Full Scan (Local + VirusTotal)
+
 
 
 python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check
@@ -89,3 +94,5 @@ MIT License - Use responsibly for authorized testing only.
 2. **Docker Notice**: Explicitly states it’s in development.
 3. **Troubleshooting Tips**: Covers common setup issues.
 4. **Ethical Reminder**: Emphasizes authorized usage.
+
+Let me know if you’d like to add a "Contributing" section or demo GIFs!
