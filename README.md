@@ -47,17 +47,13 @@ A Python script to scan directories for malicious files using local hash lists a
 Basic Scan (Local Hash List Only)
 
 ```
-
  python scanner.py /path/to/scan --hash-list known_hashes.txt
-
 ```
 
 Full Scan (Local + VirusTotal)
 
 ```
-
 python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
-
 ```
 
 | Argument      | Description 
@@ -89,6 +85,18 @@ Note: Docker integration is under development.
   * Permissions: Run with admin rights to access restricted files.
 
 
+📜 License
+
+MIT License - Use responsibly for authorized testing only.
 
 
+---
+
+### Key Enhancements:
+1. **Clear Visual Hierarchy**: Emojis and tables improve readability.
+2. **Docker Notice**: Explicitly states it’s in development.
+3. **Troubleshooting Tips**: Covers common setup issues.
+4. **Ethical Reminder**: Emphasizes authorized usage.
+
+Let me know if you’d like to add a "Contributing" section or demo GIFs!
 
