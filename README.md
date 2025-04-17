@@ -20,4 +20,25 @@ A Python script to scan directories for malicious files using local hash lists a
    ```bash
    python --version
 
+  Install Dependencies (Run as Admin):
+    bash
+  
+
+    pip install requests python-dotenv
+
+  If failed, install separately:
+    bash
+    Copy
+
+    pip install requests
+    pip install dotenv
+
+  Environment Setup:
+
+        Create a .env file in the project root:
+        ini
    
+
+        VT_API_KEY=your_virustotal_api_key_here
+
+  Ensure your environment allows imported scripts (e.g., disable execution restrictions in PowerShell/CMD).
