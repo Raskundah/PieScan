@@ -68,24 +68,45 @@ def compute_hash(file_path, buffer_size=65536): # scans the file in 65536 byte c
         return None
 
 def check_virustotal(file_hash):
-    url = f"https://www.virustotal.com/api/v3/files/{file_hash}" # the file hash to be checked on virus total.
+    """Query VirusTotal v3 API with proper error handling"""
+    url = f"https://www.virustotal.com/api/v3/files/{file_hash}"
     headers = {"x-apikey": VT_API_KEY}
     
     try:
-        time.sleep(15) # Handles api rate limiting, as we can take 4 calls a minute on a free api key.
         response = requests.get(url, headers=headers)
+        
+        # Handle specific status codes
+        if response.status_code == 404:
+            return {
+                "error": "Hash not found in VirusTotal",
+                "status_code": 404,
+                "malicious": False
+            }
+        elif response.status_code == 429:
+            print("[!] VirusTotal rate limit exceeded")
+            time.sleep(60)  # Wait 1 minute before retrying
+            return check_virustotal(file_hash)  # Recursive retry
+            
         response.raise_for_status()
-        data = response.json() # stores results in json format. allows the function to return requested data.
+        
+        data = response.json()
+        stats = data["data"]["attributes"]["last_analysis_stats"]
         
         return {
-            "malicious": data["data"]["attributes"]["last_analysis_stats"]["malicious"] > 0,
-            "positives": data["data"]["attributes"]["last_analysis_stats"]["malicious"],
-            "total": sum(data["data"]["attributes"]["last_analysis_stats"].values()),
-            "names": list(data["data"]["attributes"]["popular_threat_classification"]["suggested_threat_names"]),
+            "malicious": stats["malicious"] > 0,
+            "positives": stats["malicious"],
+            "total": sum(stats.values()),
+            "names": data["data"]["attributes"].get("popular_threat_classification", {}).get("suggested_threat_names", []),
+            "status_code": 200
         }
-    except Exception as e:
-        print(f"VirusTotal Error: {e}") # lets hope we dont have to deal with this.
-        return {"malicious": False, "positives": 0, "total": 0, "names": []}
+        
+    except requests.exceptions.RequestException as e:
+        print(f"[!] VirusTotal API Error: {str(e)}")
+        return {
+            "error": str(e),
+            "status_code": 500,
+            "malicious": False
+        }
 
 if __name__ == "__main__":
     main()
