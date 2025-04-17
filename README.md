@@ -88,15 +88,3 @@ Note: Docker integration is under development.
 📜 License
 
 MIT License - Use responsibly for authorized testing only.
-
-
----
-
-### Key Enhancements:
-1. **Clear Visual Hierarchy**: Emojis and tables improve readability.
-2. **Docker Notice**: Explicitly states it’s in development.
-3. **Troubleshooting Tips**: Covers common setup issues.
-4. **Ethical Reminder**: Emphasizes authorized usage.
-
-Let me know if you’d like to add a "Contributing" section or demo GIFs!
-
