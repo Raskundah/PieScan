@@ -2,6 +2,12 @@
 
 A Python script to scan directories for malicious files using local hash lists and the VirusTotal API. Ideal for cybersecurity investigations and threat hunting.
 
+## Warning ⚠
+
+Currently for testing purposes this contains a version of wannacry. Do not commit any damn crimes. Always use Malware responsibly. 
+As of this being the case, your AV or other systems will flag this. If you're using this, you likely already want to test against malware.
+So please, don't be stupid.
+
 ---
 
 ## 📋 Features
