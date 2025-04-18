@@ -66,7 +66,41 @@ python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
 
 ## 🐋 Docker Support (Coming Soon!)
 
-Note: Docker integration is under development.
+The script comes prepackaged with a dockerfile ready to build.
+
+simple perform the following 
+
+```
+docker build -t yourBuildName .
+```
+
+To run with just the local version perform the following command:
+
+```
+docker run -v your/directory/here:/scandir 
+```
+
+To establish your API key for Virus Total:
+
+```
+-e VT_API_KEY=YOUR_KEY_HERE
+```
+
+and to add a local hash list to the scan:
+
+```
+.\Your/hash/file:/app/hashes.txt
+```
+
+and the final command will look something like this for all options.
+
+```
+docker run -v .\Directory\to\scan:/scandir -e VT_API_KEY=YOUR_API_KEY -v .\your/hash/file.txt:/app/hashes.txt  yourBuildName  --hash-list hashes.txt --vt-check
+
+```
+
+Make sure to use the path type based on the local OS. I.E "\" for windows and "/" for linux. 
+
 
 ---
 
