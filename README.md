@@ -11,6 +11,8 @@ A Python script to scan directories for malicious files using local hash lists a
   - **VirusTotal API**: Real-time lookup for threat intelligence.
 - **SHA-256 Hashing**: Secure file hashing with error handling.
 - **Lightweight**: No heavy dependencies.
+- **Docker Support**: Uses docker to run on various CLI's if desired without manually importing.
+- **Flexibility**: Can be modified to user's needs.
 
 ---
 
@@ -64,17 +66,17 @@ python scanner.py /path/to/scan --hash-list known_hashes.txt --vt-check}
 
 ---
 
-## 🐋 Docker Support (Coming Soon!)
+## 🐋 Docker Support!
 
 The script comes prepackaged with a dockerfile ready to build.
 
-simple perform the following 
+simply perform the following 
 
 ```
 docker build -t yourBuildName .
 ```
 
-To run with just the local version perform the following command:
+To add the directory to be scanned on your machine:
 
 ```
 docker run -v your/directory/here:/scandir 
@@ -96,10 +98,11 @@ and the final command will look something like this for all options.
 
 ```
 docker run -v .\Directory\to\scan:/scandir -e VT_API_KEY=YOUR_API_KEY -v .\your/hash/file.txt:/app/hashes.txt  yourBuildName  --hash-list hashes.txt --vt-check
-
 ```
 
 Make sure to use the path type based on the local OS. I.E "\" for windows and "/" for linux. 
+
+I am but a student and unable to aid in much technical support.
 
 
 ---
@@ -121,7 +124,7 @@ Make sure to use the path type based on the local OS. I.E "\" for windows and "/
 
   * Hash List Format: One hash per line (SHA-256, lowercase).
 
-  * Permissions: Run with admin rights to access restricted files.
+  * Permissions: Run with admin rights to access restricted files. 
 
 
 ## 📜 License
